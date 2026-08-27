@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101b2e" />
+    <meta name="description" content="A personal gym and health progress tracker" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Pulse — Gym & Health</title>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">YOUR WELLNESS SPACE</p>
+          <h1>Good morning, Shafi <span>✦</span></h1>
+        </div>
+        <button class="avatar" aria-label="Profile">S</button>
+      </header>
+
+      <section id="dashboard" class="screen active">
+        <article class="hero-card">
+          <div class="hero-top"><span>THIS WEEK</span><span id="weekLabel">Aug 24 – 30</span></div>
+          <div class="ring-wrap"><div class="progress-ring"><span id="workoutCount">3</span><small>of 5</small></div><div><h2>Keep your streak alive</h2><p>Two more sessions to reach your weekly goal.</p></div></div>
+          <div class="week-days" id="weekDays"></div>
+        </article>
+
+        <section class="section-heading"><div><p class="eyebrow">TODAY</p><h2>Your health snapshot</h2></div><button class="text-button" data-screen="health">View all</button></section>
+        <section class="metrics-grid">
+          <article class="metric-card accent-lime"><span class="metric-icon">♢</span><p>Weight</p><strong id="weightValue">72.4 <small>kg</small></strong><em id="weightChange">↓ 0.6 kg this month</em></article>
+          <article class="metric-card accent-blue"><span class="metric-icon">♡</span><p>Resting heart rate</p><strong id="heartValue">62 <small>bpm</small></strong><em>Great range</em></article>
+          <article class="metric-card accent-purple"><span class="metric-icon">☾</span><p>Sleep</p><strong id="sleepValue">7.8 <small>hrs</small></strong><em>+0.4 vs. last week</em></article>
+          <article class="metric-card accent-orange"><span class="metric-icon">⚡</span><p>Daily energy</p><strong id="energyValue">8 <small>/10</small></strong><em>Feeling strong</em></article>
+        </section>
+
+        <section class="section-heading"><div><p class="eyebrow">NEXT UP</p><h2>Training plan</h2></div><button class="text-button" data-screen="workouts">See plan</button></section>
+        <article class="next-workout"><div class="workout-icon">⌁</div><div><p>UPPER BODY · 45 MIN</p><h3>Push strength</h3><span>Bench press · Shoulders · Triceps</span></div><button class="round-button" id="startWorkout" aria-label="Start workout">→</button></article>
+      </section>
+
+      <section id="workouts" class="screen">
+        <section class="page-heading"><p class="eyebrow">TRAINING</p><h2>Workout log</h2><p>Build consistency, one session at a time.</p></section>
+        <section class="section-heading compact"><div><p class="eyebrow">SAVED PROGRAMS</p><h2>Train with a plan</h2></div><button class="text-button" id="newProgram">Create</button></section>
+        <div class="program-grid" id="programGrid"></div>
+        <div class="goal-card"><div><span>WEEKLY TARGET</span><strong id="goalText">3 / 5 workouts</strong></div><div class="bar"><i id="goalBar"></i></div></div>
+        <div class="workout-list" id="workoutList"></div>
+        <button class="primary-button" id="addWorkout">＋ Log a workout</button>
+      </section>
+
+      <section id="health" class="screen">
+        <section class="page-heading"><p class="eyebrow">HEALTH</p><h2>Progress & recovery</h2><p>Your body signals, made clearer.</p></section>
+        <article class="chart-card"><div class="chart-header"><div><p>WEIGHT TREND</p><h3 id="chartWeight">72.4 kg</h3></div><span>Last 7 days</span></div><svg viewBox="0 0 330 120" class="chart" role="img" aria-label="Weight trend chart"><defs><linearGradient id="fill" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#b9ff39" stop-opacity=".38"/><stop offset="1" stop-color="#b9ff39" stop-opacity="0"/></linearGradient></defs><path d="M0,38 C26,35 37,66 67,55 S104,30 130,45 S171,75 202,56 S237,31 264,42 S301,37 330,17 L330,120 L0,120Z" fill="url(#fill)"/><path d="M0,38 C26,35 37,66 67,55 S104,30 130,45 S171,75 202,56 S237,31 264,42 S301,37 330,17" fill="none" stroke="#b9ff39" stroke-width="3" stroke-linecap="round"/></svg><div class="chart-dates"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div></article>
+        <section class="section-heading compact"><div><p class="eyebrow">TODAY'S CHECK-IN</p><h2>How do you feel?</h2></div></section>
+        <div class="mood-selector" id="moodSelector"><button data-value="2">😕<span>Low</span></button><button data-value="5">😐<span>Okay</span></button><button class="selected" data-value="8">🙂<span>Good</span></button><button data-value="10">🤩<span>Great</span></button></div>
+        <article class="checkin-card"><div><span>WATER</span><strong id="waterLabel">5 / 8 glasses</strong></div><div class="water-controls"><button id="waterDown">−</button><div class="water-dots" id="waterDots"></div><button id="waterUp">＋</button></div></article>
+        <button class="primary-button" id="saveCheckin">Save today’s check-in</button>
+      </section>
+
+      <section id="profile" class="screen">
+        <section class="profile-head"><div class="large-avatar">S</div><h2>Shafi</h2><p>Getting stronger since 2026</p></section>
+        <div class="profile-stats"><div><strong id="totalWorkouts">3</strong><span>Workouts</span></div><div><strong>4</strong><span>Week streak</span></div><div><strong>12</strong><span>PRs hit</span></div></div>
+        <div class="settings-list"><button><span>◎</span> Weekly goal <b>5 workouts</b></button><button><span>◌</span> Units <b>Metric</b></button><button id="exportData"><span>⇩</span> Export my data <b>›</b></button></div>
+        <p class="data-note">Your data stays privately on this device.</p>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Main navigation"><button class="active" data-screen="dashboard"><span>⌂</span>Home</button><button data-screen="workouts"><span>▣</span>Train</button><button class="nav-add" id="quickAdd" aria-label="Log workout">＋</button><button data-screen="health"><span>♡</span>Health</button><button data-screen="profile"><span>◉</span>Profile</button></nav>
+
+    <dialog id="workoutDialog"><form method="dialog"><button class="close" value="cancel" aria-label="Close">×</button><p class="eyebrow">NEW SESSION</p><h2>Log a workout</h2><label>Workout name<input id="workoutName" placeholder="e.g. Push strength" required /></label><label>Duration (minutes)<input id="workoutDuration" type="number" min="1" value="45" required /></label><label>Training focus<select id="workoutFocus"><option>Strength</option><option>Cardio</option><option>Mobility</option><option>Sports</option></select></label><button class="primary-button" id="saveWorkout" value="default">Save workout</button></form></dialog>
+    <dialog id="programDialog"><form method="dialog"><button class="close" value="cancel" aria-label="Close">×</button><p class="eyebrow">SAVED PROGRAM</p><h2 id="programTitle">Upper body</h2><p class="program-description" id="programDescription"></p><div class="program-media" id="programMedia"></div><a id="programReference" class="reference-link" target="_blank" rel="noopener">Open exercise reference ↗</a><div class="exercise-list" id="exerciseList"></div><button class="primary-button" id="finishProgram" value="default">Finish & log workout</button></form></dialog>
+    <dialog id="createProgramDialog"><form method="dialog"><button class="close" value="cancel" aria-label="Close">×</button><p class="eyebrow">YOUR PROGRAM</p><h2>Create a preset</h2><label>Program name<input id="programName" placeholder="e.g. Pull day" required /></label><label>Reference image or video link<input id="programMediaUrl" type="url" placeholder="https://…" /></label><small class="field-help">Paste a YouTube/video link or direct image link. It stays saved with the program.</small><label>First exercise<input id="firstExercise" placeholder="e.g. Lat pulldown" required /></label><label>Sets <input id="firstSets" type="number" min="1" value="3" required /></label><label>Reps <input id="firstReps" value="10" required /></label><button class="primary-button" id="saveProgram" value="default">Save preset</button></form></dialog>
+    <div id="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
